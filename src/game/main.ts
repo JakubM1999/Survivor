@@ -1,14 +1,14 @@
 import { Game as MainGame } from './scenes/Game';
-import { AUTO, Game, Types } from 'phaser';
+import { AUTO, Game, Types, WEBGL } from 'phaser';
 
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config: Types.Core.GameConfig = {
-    type: AUTO,
-    width: 1024,
-    height: 768,
+    type: WEBGL, // Use WebGL for 3D capabilities
+    width: window.innerWidth,
+    height: window.innerHeight,
     parent: 'game-container',
-    backgroundColor: '#028af8',
+    backgroundColor: '#1a1a1a',
     scene: [
         MainGame
     ],
@@ -17,6 +17,14 @@ const config: Types.Core.GameConfig = {
         arcade: {
             debug: false // Change to true to see physics bodies for debugging
         }
+    },
+    scale: {
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    render: {
+        pixelArt: true, // Enable pixel art mode for crisp sprites
+        antialias: false
     }
 };
 
